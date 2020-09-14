@@ -1,0 +1,29 @@
+<!-- Modal -->
+<div class="modal fade" id="{{eventDetail.id}}" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>{{eventDetail.name}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          <h4 class="modal-title">Event Name: {{eventDetail.name}}</h4>
+            <div>Date: {{eventDetail.date}}</div>
+            <div>Time: {{eventDetail.time}}</div>
+            <div>Price: ${{eventDetail.price}}</div>
+            <div>
+                <span>Location: {{eventDetail.location.address}}</span>
+                <span>&nbsp;</span>
+                <span>{{eventDetail.location.city}}, {{eventDetail.location.country}}</span>   
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

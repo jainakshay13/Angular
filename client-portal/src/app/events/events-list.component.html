@@ -1,0 +1,16 @@
+<div>
+<div class="container-fluid">
+    <h1>Upcoming Event List</h1>
+    <hr>
+    <div *ngFor="let event of events">
+        <div class="well hoverwell thumbnail">
+            <div>
+                <a [href]="'events/' + event.id" style="font-size:30px">{{event.name}}</a>
+                <button type="button" class="btn btn-info btn-md" style="float:right" data-toggle="modal" [attr.data-target]="'#' + event.id">Show Event Details</button>
+                <event-details [eventDetail]="event"></event-details>
+            </div>
+            
+        </div>
+    </div>  
+</div>
+</div>
