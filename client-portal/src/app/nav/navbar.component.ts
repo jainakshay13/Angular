@@ -1,5 +1,7 @@
 import {Component} from "@angular/core"
-
+import { Router } from '@angular/router';
+import {AuthService} from '../users/authentication.service'
+import { LoginComponent } from '../users/login.component';
 @Component({
     selector: 'navbar',
     templateUrl: './navbar.component.html',
@@ -10,5 +12,15 @@ import {Component} from "@angular/core"
 })
 
 export class NavBarComponent {
+    constructor(public authService: AuthService, private router: Router) {
 
+    }
+
+    isNavBarEnabled() {
+        return this.authService.isAuthenticated();
+    }
+
+    logout() {
+        this.router.navigate(['/user/login'])
+    }
 }

@@ -1,0 +1,24 @@
+
+
+<h1>Your Profile</h1>
+<hr/>
+<div class= "container">
+    <form [formGroup]="profileForm" (ngSubmit)="saveProfile(profileForm.value)">  
+        <div class="col-md-4">
+            <div class="form-group" [ngClass]="{'error' : validateFirstName() }">
+                <label for="Firstname">Firstname:</label>
+                <em *ngIf="validateFirstName() && profileForm.controls.firstName.errors.required">Required</em>
+                <em *ngIf="validateFirstName() && profileForm.controls.firstName.errors.pattern">Must start with letter</em>
+                <input type="text" class="form-control"  formControlName="firstName" name="firstName" placeholder="First Name...">
+            </div>
+            <div class="form-group" [ngClass]="{'error' : validateLastName()}">
+                <label for="Lastname">Lastname:</label>
+                <em *ngIf="validateLastName() && profileForm.controls.firstName.errors.required">Required</em>
+                <em *ngIf="validateLastName() && profileForm.controls.firstName.errors.pattern">Must start with letter</em>
+                <input type="text" class="form-control" formControlName="lastName" name="lastName">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Save" />
+            <input type="button" class="btn btn-secondary" value="Cancel" (click)="cancel()"/>
+        </div>
+    </form>
+</div>

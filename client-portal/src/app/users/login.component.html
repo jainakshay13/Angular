@@ -1,0 +1,21 @@
+
+<div class="container">
+    <h1>Event Management</h1>    <hr>
+<form #loginForm="ngForm" (ngSubmit)="login()"  ngNativeValidate autocomplete="off">  
+    <div class="col-md-4">
+        <label class="text-warning">{{errorMessage}}</label><br/>
+        <div class="form-group">
+            <label for="Username">Username:</label>
+            <em *ngIf="loginForm.controls.userName?.invalid && loginForm.controls.userName?.touched">Required</em>
+            <input type="text" required class="form-control" [(ngModel)]="username" name="userName" id="userName" placeholder="User Name...">
+        </div>
+        <div class="form-group">
+            <label for="Password">Password:</label>
+            <em *ngIf="loginForm.controls.password?.invalid && loginForm.controls.password?.touched">Required</em>
+            <input type="password" required class="form-control" [(ngModel)]="password" name="password" placeholder="Password...">
+        </div>
+        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+        <button type="button" class="btn btn-default">Cancel</button>
+    </div>
+</form>
+</div>

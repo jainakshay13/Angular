@@ -1,4 +1,5 @@
 import {Component, Input} from "@angular/core"
+import { IEvent } from './events';
 
 @Component({
     selector: 'event-details',
@@ -7,6 +8,7 @@ import {Component, Input} from "@angular/core"
 
 export class EventDetailsComponent {
 
-    @Input() eventDetail:any;
+    @Input() eventDetail:IEvent;
+    
 
 }

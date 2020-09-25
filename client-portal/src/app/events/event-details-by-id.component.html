@@ -3,15 +3,16 @@
 
   <div class="row">
     <div class="col-md-11">
-      <h2>{{event?.name}} </h2>
+      <h2>{{event?.name | uppercase}} </h2>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6">
-      <div><strong>Date:</strong> {{event?.date}}</div>
+                                                        <!-- date format: 'short', 'shortDate', 'y/M/d' -->
+      <div><strong>Date:</strong> {{event?.date | date:'shortDate'}}</div>
       <div><strong>Time:</strong> {{event?.time}}</div>
-      <div><strong>Price:</strong> ${{event?.price}}</div>
+      <div><strong>Price:</strong> {{event?.price | currency: 'INR'}}</div>
     </div>
     <div class="col-md-6">
       <address>
@@ -20,9 +21,19 @@
         {{event?.location?.city}}, {{event?.location?.country}}
       </address>
     </div>
-
-    <div> 
-      <a href="/events" class="btn btn-secondary">Back</a>
-    </div>
   </div>
+  <hr/>
+  <div class="row">
+    <div class="col-md-2">
+      <h3>Sessions</h3>
+    </div>
+    <div class="col-md-10">
+      <a (click)="addSession()">Add Session</a>
+    </div>  
+  </div>
+    <div>
+      <session-list *ngIf="!addSessionMode" [sessions]="event?.sessions"></session-list>
+      <create-session *ngIf="addSessionMode" (session)="saveNewSession($event)" (cancelEvent)="cancel()"></create-session>
+    </div>
+    
 </div>

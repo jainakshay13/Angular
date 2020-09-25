@@ -1,12 +1,18 @@
 import {Injectable} from "@angular/core"
-
+import { Subject } from 'rxjs';
+import { IEvent } from "./events"
 @Injectable()
 export class EventService {
-    events = [
+    updateEvent(event: IEvent) {
+        let index = this.events.findIndex(x=>x.id = event.id)
+        this.events[index] = event;
+    }
+    
+    events:IEvent[] = [
         {
           id: 1,
           name: 'Angular Connect',
-          date: '9/26/2036',
+          date: new Date('9/26/2036'),
           time: '10:00 am',
           price: 599.99,
           imageUrl: '/assets/images/angularconnect-shield.png',
@@ -84,7 +90,7 @@ export class EventService {
         {
           id: 2,
           name: 'Advanced Angular and Typescript',
-          date: '4/15/2037',
+          date: new Date('4/15/2037'),
           time: '9:00 am',
           price: 950.00,
           imageUrl: '/assets/images/ng-nl.png',
@@ -144,7 +150,7 @@ export class EventService {
         {
           id: 3,
           name: 'Node - A new mode',
-          date: '5/4/2037',
+          date: new Date('5/4/2037'),
           time: '9:00 am',
           price: 759.00,
           imageUrl: '/assets/images/ng-conf.png',
@@ -226,7 +232,7 @@ export class EventService {
         {
           id: 4,
           name: 'UN Angular Summit',
-          date: '6/10/2037',
+          date: new Date('6/10/2037'),
           time: '8:00 am',
           price: 800.00,
           imageUrl: '/assets/images/basic-shield.png',
@@ -275,7 +281,7 @@ export class EventService {
         {
           id: 5,
           name: 'Ng-vegas',
-          date: '2/10/2037',
+          date: new Date('2/10/2037'),
           time: '9:00 am',
           price: 400.00,
           imageUrl: '/assets/images/ng-vegas.png',
@@ -313,11 +319,20 @@ export class EventService {
         }
       ]
 
-      getAllEvents() {
-          return this.events;
+      getAllEvents(): IEvent[] {
+        // let subject = new Subject<IEvent[]>();
+        // setTimeout(() => {subject.next(this.events);subject.complete();},100)
+        //   return subject;
+        return this.events;
       }
 
       getEvent(id:number) {
           return this.events.find(event => event.id === id);
       }
+
+      saveEvent(event) {
+        event.id=999
+        event.session = []
+        this.events.push(event)
+    }
 }

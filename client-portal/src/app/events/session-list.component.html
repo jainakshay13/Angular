@@ -1,0 +1,30 @@
+<div id="filterButtons" class="row">
+    <div  class="col-md-4 btn-group btn-group-sm">
+            Sort By:&nbsp;  
+            <select name="sortBy" #sort style="background-color: gray; color: white" (change)="sortSessions(sort.value)"> 
+                <option value="name">Name</option>
+                <option value="voters">Voters</option>
+            </select>
+    </div>
+    <div  style="padding-left:400px" class="btn-group btn-group-sm col-md-8">
+            Filters:&nbsp;  
+            <button (click)="filterBy='all';filterBySession()" class="btn-default" [class.active]="filterBy==='all'">All</button>
+            <button (click)="filterBy='beginner';filterBySession()" class="btn-default" [class.active]="filterBy==='beginner'">Beginner</button>
+            <button (click)="filterBy='intermediate';filterBySession()" class="btn-default" [class.active]="filterBy==='intermediate'">Intermediate</button>
+            <button (click)="filterBy='advanced';filterBySession()" class="btn-default" [class.active]="filterBy==='advanced'">Advanced</button>    
+    </div>
+</div>
+<div class="row" *ngFor="let session of filteredSessions">
+    <div class="col-md-12">
+        <div class="well">
+            <h3>{{session.name}}</h3>
+            <h5>Presenter: {{session.presenter}}</h5>
+            <span>Duration: {{session.duration | duration}} </span> &nbsp;
+            <span>Level: {{session.level}}</span><br/><br/>
+            <p>{{session.abstract}}</p>
+        </div>
+    </div>
+</div>
+<div>
+    <button class="btn btn-info" (click)="back()">Back</button>
+</div>
